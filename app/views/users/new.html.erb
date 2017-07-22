@@ -1,0 +1,77 @@
+<style type="text/css">
+	.new_user{
+		padding: 50px;
+		padding-top: 10px;
+	}
+	.password{
+		
+	}
+	#register{
+		margin-top: 75px;
+	}
+
+</style>
+<div class="new_user">
+	<h1 id="create"><u>Create Group</u></h1>
+	<form action="/groups" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<div class="row">
+		  <div class="col-md-4">
+		  	<label for="Name" >Name</label>
+		    <input type="text" class="form-control" name="group[name]">
+		  </div>
+		  <div class="col-md-4">
+		  	<label for="Last Name" >Location</label>
+		    <input type="text" class="form-control" name="group[location]">
+		  </div>
+		  <div class="col-md-4">
+		  	<label for="Key" >Group Key</label>
+		    <input type="number" class="form-control" name="group[key]">
+		  </div>
+		</div>
+		<br>
+		<input type="submit" class="btn btn-primary" value="Submit">
+	</form>
+	<br>
+	<hr>
+	<h1 id="register"><u>Register with Group</u></h1>
+	<form action="/users" method="post" class="form-inline">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	  <div class="row">
+		  <div class="col-md-3">
+		  	<label for="First Name" >First Name</label>
+		    <input type="text" class="form-control" name="user[first_name]">
+		  </div>
+		  <div class="col-md-3">
+		  	<label for="Last Name" >Last Name</label>
+		    <input type="text" class="form-control" name="user[last_name]">
+		  </div>
+		  <div class="col-md-3">
+		  	<label for="Username" >Username</label>
+		    <input type="text" class="form-control" name="user[username]">
+		  </div>
+		  <div class="col-md-3">
+		  	<label for="Email" >Email</label>
+		    <input type="text" class="form-control" name="user[email]">
+		  </div>
+		</div>
+		<br>
+		<div class="row password">
+			<div class="col-md-4">
+		  	<label for="password" >Enter Password</label>
+		    <input type="password" class="form-control" name="user[password]">
+		  </div>
+		  <div class="col-md-4">
+		  	<label for="password comfirmation" >Password Confirmation</label>
+		    <input type="password" class="form-control" name="user[password_confirmation]">
+		  </div>
+		  <div class="col-md-4">
+		  	<label for="group" >Group Key</label>
+		    <input type="number" class="form-control" name="user[group]">
+		  </div>
+		</div>
+		<br>
+		<input type="submit" class="btn btn-primary" value="Submit">
+	</form>
+</div>
+

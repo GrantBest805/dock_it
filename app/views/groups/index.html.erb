@@ -1,0 +1,101 @@
+
+<h1>Welcome To <u><%= @group.name %></u></h1>
+
+<!-- Trigger the modal with a button -->
+<div class="pull-left">
+	<% if @user.manager == true %>
+		<a href="" class="title" data-toggle="modal" data-target="#titleModel"><u>Add Title</u></a>
+	<% end %>
+</div>
+<!-- Modal -->
+<div id="titleModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Title</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/titles" method="post">
+        	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        	Title: <input type="text" name="title[title]">
+        	<input type="hidden" name="title[group_id]" value="<%= @user.group.id %>">
+        	Username: 
+        	<select>
+        		<% @group.users.each do |user| %>
+        			<option><%= user.first_name %></option>
+        		<% end %>
+        	</select>
+        	<input class="pop-add" type="submit" value="Add">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<table class="table table-hover table-striped table-bordered">
+	<tr>
+		<th>Title</th>
+	<% @days.each do |d| %>
+		<th><%= d.day %></th>
+	<% end %>
+	</tr>
+	<tr>
+		<td>cook</td>
+		<td value="monday">
+			<select>
+				<option>5-7pm</option>
+				<option>you close up</option>
+				<option selected>Bill</option>
+			</select>
+		</td>
+		<td value="tuesday">
+			<select>
+				<option>5-7pm</option>
+				<option>you close up</option>
+				<option selected>Grant</option>
+			</select>
+		</td>
+		<td value="wednesday">
+			<select>
+				<option>5-7pm</option>
+				<option>you close up</option>
+				<option selected>Billy</option>
+			</select>
+		</td>
+		<td value="thursday">
+			<select>
+				<option>5-7pm</option>
+				<option>you close up</option>
+				<option selected>Melissa</option>
+			</select>
+		</td>
+		<td value="friday">
+			<select>
+				<option>5-7pm</option>
+				<option>you close up</option>
+				<option selected>Sam</option>
+			</select>
+		</td>
+		<td value="saturday">
+			<select>
+				<option>5-7pm</option>
+				<option>you close up</option>
+				<option selected>John</option>
+			</select>
+		</td>
+		<td value="sunday">
+			<select>
+				<option>5-7pm</option>
+				<option>you close up</option>
+				<option selected>Pam</option>
+			</select>
+		</td>
+	</tr>
+</table>

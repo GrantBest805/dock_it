@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TheDockit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+		<link href="https://fonts.googleapis.com/css?family=Frijole" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+	<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign In</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/sessions" method="post">
+        	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        	Username: <input type="text" name="user[username]">
+        	Password: <input type="password" name="user[password]">
+        	<input type="submit" name="Sing in">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/">Home</a>
+      <hr>
+      <a href="" data-toggle="modal" data-target="#myModal">Sing In</a>
+      <hr>
+      <a href="/users/new">Create Group</a>
+      <hr>
+      <a href="#">Register with a Group</a>
+      <hr>
+      <a href="#">Info</a>
+      <hr>
+      <% if current_user %>
+      <a href="/groups/<%= current_user.group.id %>" class="my_group" ><u>My Group</u></a>
+      <a href="/users/<%= current_user.id %>"><u>My Profile</u></a>
+      <a href="/sessions/<%= current_user.id %>" data-method="DELETE" class="logout"><u>Logout</u></a>
+      <% end %>
+    </div>
+
+    <!-- Use any element to open the sidenav -->
+    <span onclick ="openNav()" class="glyphicon glyphicon-calendar"><b id="menu">MENU</b></span>
+    <h1 class="thelogo">Dock*It</h1>
+    <div class="user">
+		  <% if current_user && current_user.manager == true %>
+		  	<h2 class="the_current"><span class="glyphicon glyphicon-king"></span><%= current_user.username %></h2>
+		  <% end %>
+		  <% if current_user && current_user.manager != true %>
+		  	<h2 class="the_current "><span class="glyphicon glyphicon-pawn"></span><%= current_user.username %></h2>
+		  <% end %>
+    </div>
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    
+    <div class="container-fluid">
+      <img id="hanger" src="/assets/hanger.png">
+      <div class="page">
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |e| %>
+            <p class="errors"><%= e %></p>
+         <% end %>
+        <% end %>
+        <% if flash[:notice] %>
+          <p class="alert alert-info"><%= flash[:notice] %></p>
+        <% end %>
+         <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

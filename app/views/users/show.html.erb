@@ -1,0 +1,78 @@
+<h2><u>Jun 1st - 7th</u></h2>
+<table class="table table-bordered table-hover">
+	<tr>
+    <th>Days</th>
+		<th>Title</th>
+    <th>Hour's</th>
+    <th>Description</th>
+	</tr>
+  <% @days.each do |d| %>
+  	<tr>
+      <td><%= d.day %></td>
+  	</tr>
+  <% end %>
+</table>
+<button href="" data-toggle="modal" data-target="#userModel">Send Message</button>
+<!-- Trigger the modal with a button -->
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+    	<h3><u>My Messages</u></h3>
+      <ul class="the-left">
+        <li>this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well">
+      <h3><u>Group Messages</u></h3>
+      <ul class="the-left">
+        <li>this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+        <li >this is the first message</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="userModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Send Message</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/messages" method="post">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          Messsge: <input type="text" name="message[message]">
+          Send To: <input type="text" name="message[send_to]">
+          <input type="hidden" name="message[group_id]" value="<%= @user.group.id %>">
+          <input type="submit" value="Send">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

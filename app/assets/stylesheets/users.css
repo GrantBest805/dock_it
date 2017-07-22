@@ -1,0 +1,11 @@
+
+.well{
+
+	margin:60px;
+	margin-top: 30px;
+	height: 150px;
+	overflow: scroll;
+}
+ul{
+	text-align: left;
+}

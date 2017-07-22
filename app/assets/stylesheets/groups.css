@@ -1,0 +1,12 @@
+select{
+	max-width: 80%;
+}
+.pull-left{
+	margin-left: 10px;
+	display: inline-block;
+}
+.title{
+}
+.pop-add{
+	margin-left: 10px;
+}
